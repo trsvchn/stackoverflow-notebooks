@@ -1,0 +1,14 @@
+name: SO notebooks
+on: push
+
+jobs:
+  build:
+    name: Add/Update colab badges
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: trsvchn/colab-badge-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          check: 'all'
+          update: true
