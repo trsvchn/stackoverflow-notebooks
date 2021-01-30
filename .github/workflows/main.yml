@@ -6,9 +6,11 @@ jobs:
     name: Add/Update colab badges
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: trsvchn/colab-badge-action@v1
+      - uses: actions/checkout@v2
+      - uses: trsvchn/colab-badge-action@v2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           check: 'all'
           update: true
+          target_branch: master
+          target_repository: trsvchn/stackoverflow-notebooks
