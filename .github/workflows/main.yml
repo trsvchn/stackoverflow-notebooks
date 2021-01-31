@@ -12,7 +12,7 @@ jobs:
 
       - name: Add/Update badges
         id: badges
-        uses: trsvchn/colab-badge-action@main
+        uses: trsvchn/colab-badge-action@v3
         with:
           args: ''
           check: 'all'
