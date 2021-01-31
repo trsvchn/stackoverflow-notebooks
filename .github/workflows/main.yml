@@ -6,11 +6,23 @@ jobs:
     name: Add/Update colab badges
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: trsvchn/colab-badge-action@v2
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v2
+
+      - name: Add/Update badges
+        id: badges
+        uses: trsvchn/colab-badge-action@main
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          args: ''
           check: 'all'
           update: true
           target_branch: master
           target_repository: trsvchn/stackoverflow-notebooks
+
+      - name: Commit Updates
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Add/Update Colab badges"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
